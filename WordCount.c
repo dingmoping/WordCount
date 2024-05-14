@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-        printf("ç”¨æ³•: %s -c|-w æ–‡ä»¶å\n", argv[0]);
+        printf("ÓÃ·¨: %s -c|-w ÎÄ¼şÃû\n", argv[0]);
         return 1;
     }
 
@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     FILE *file = fopen(file_name, "r");
 
     if (file == NULL) {
-        printf("æ— æ³•æ‰“å¼€æ–‡ä»¶ %s\n", file_name);
+        printf("ÎŞ·¨´ò¿ªÎÄ¼ş %s\n", file_name);
         return 1;
     }
 
@@ -24,27 +24,27 @@ int main(int argc, char *argv[]) {
 
     while ((ch = fgetc(file)) != EOF) {
         char_count++;
-        // æ£€æŸ¥æ˜¯å¦ä¸ºå•è¯åˆ†éš”ç¬¦
+        // ¼ì²éÊÇ·ñÎªµ¥´Ê·Ö¸ô·û
         if (ch == ' ' || ch == ',' || ch == '\n' || ch == '\t') {
             if (in_word) {
-                word_count++; // å®Œæˆä¸€ä¸ªå•è¯çš„è®¡æ•°
+                word_count++; // Íê³ÉÒ»¸öµ¥´ÊµÄ¼ÆÊı
                 in_word = false;
             }
         } else {
             in_word = true;
         }
     }
-    // æ–‡ä»¶ç»“æŸæ—¶ï¼Œæ£€æŸ¥æœ€åä¸€ä¸ªå­—ç¬¦æ˜¯å¦ä¸ºå•è¯çš„ä¸€éƒ¨åˆ†
+    // ÎÄ¼ş½áÊøÊ±£¬¼ì²é×îºóÒ»¸ö×Ö·ûÊÇ·ñÎªµ¥´ÊµÄÒ»²¿·Ö
     if (in_word) {
         word_count++;
     }
     fclose(file);
     if (strcmp(param, "-c") == 0) {
-        printf("å­—ç¬¦æ•°ï¼š%d\n", char_count);
+        printf("×Ö·ûÊı£º%d\n", char_count);
     } else if (strcmp(param, "-w") == 0) {
-        printf("å•è¯æ•°ï¼š%d\n", word_count);
+        printf("µ¥´ÊÊı£º%d\n", word_count);
     } else {
-        printf("æ— æ•ˆçš„å‚æ•° %s\n", param);
+        printf("ÎŞĞ§µÄ²ÎÊı %s\n", param);
         return 1;
     }
     return 0;
